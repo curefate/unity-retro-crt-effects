@@ -1,0 +1,24 @@
+{
+  "name": "com.retro.crt-effects",
+  "version": "1.0.0",
+  "displayName": "Retro CRT Effects",
+  "description": "A collection of retro CRT and PSX-style visual effects for Unity URP. Includes scanlines, phosphor glow, chromatic aberration, VHS-style distortion, and PSX color quantization.",
+  "unity": "2022.3",
+  "keywords": [
+    "CRT",
+    "retro",
+    "PSX",
+    "VHS",
+    "post-processing",
+    "shader",
+    "visual effects",
+    "URP"
+  ],
+  "author": {
+    "name": "Your Name",
+    "email": "your.email@example.com"
+  },
+  "dependencies": {
+    "com.unity.render-pipelines.universal": "14.0.0"
+  }
+}
