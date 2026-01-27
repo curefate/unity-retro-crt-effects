@@ -144,4 +144,3 @@ Created for retro-style game development and nostalgic visual aesthetics.
 ## Support
 
 For issues, questions, or contributions, please visit:
-https://github.com/yourusername/unity-retro-crt-effects
