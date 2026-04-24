@@ -5,6 +5,7 @@ A collection of retro visual effects for Unity's Universal Render Pipeline (URP)
 ## Features
 
 ### CRT Effect
+
 - **Scanlines**: Classic horizontal scan lines with adjustable intensity
 - **Screen Curvature**: Barrel distortion to simulate curved CRT screens
 - **Chromatic Aberration**: Color separation for authentic analog feel
@@ -18,8 +19,8 @@ A collection of retro visual effects for Unity's Universal Render Pipeline (URP)
 - **Interlacing**: Alternating scan line effect
 - **Glow/Bloom**: Soft glow around bright areas
 
-### PSX CRT Effect
-All CRT effects plus:
+### PSX Effect
+
 - **Color Depth Reduction**: Simulate PS1's limited color palette (5-bit color)
 - **Dithering**: Ordered Bayer dithering to hide color banding
 - **Posterization**: Additional color banding for that crunchy PS1 look
@@ -30,11 +31,13 @@ All CRT effects plus:
 ## Installation
 
 ### Option 1: Unity Package Manager (Git URL)
+
 1. Open Unity Package Manager (Window > Package Manager)
 2. Click the "+" button and select "Add package from git URL"
 3. Enter: `https://github.com/mushroom-ano/unity-retro-crt-effects.git`
 
 ### Option 2: Manual Installation
+
 1. Download or clone this repository
 2. Copy the folder to your project's `Packages` directory
 3. Unity will automatically detect and import the package
@@ -46,9 +49,9 @@ All CRT effects plus:
 1. **Add Renderer Feature**
    - Select your URP Renderer asset (usually in `Settings/ForwardRenderer`)
    - Click "Add Renderer Feature"
-   - Choose either:
-     - `CRT Renderer Feature` for classic CRT effects
-     - `PSX CRT Renderer Feature` for PSX + CRT combined effects
+      - Choose either:
+         - `CRT Renderer Feature` for classic CRT effects
+         - `PSX Renderer Feature` for PSX-style rendering (no CRT)
 
 2. **Configure Settings**
    - Adjust the parameters in the Renderer Feature inspector
@@ -57,6 +60,7 @@ All CRT effects plus:
 ### Effect Parameters
 
 #### CRT Effect Parameters
+
 - **Pixel Size** (1-20): Size of individual pixels
 - **Scanline Intensity** (0-1): Darkness of scan lines
 - **Scanline Count** (100-1000): Number of horizontal lines
@@ -74,7 +78,8 @@ All CRT effects plus:
 - **Color Bleed Intensity** (0-1): Horizontal color smearing
 - **Interlacing Intensity** (0-1): Scan line interlacing
 
-#### PSX Effect Additional Parameters
+#### PSX Effect Parameters
+
 - **PSX Color Depth** (2-8): Bits per color channel (5 = PS1)
 - **PSX Dither Intensity** (0-1): Dithering pattern visibility
 - **PSX Posterization** (0-1): Additional color quantization
@@ -91,7 +96,8 @@ All CRT effects plus:
 ## Examples
 
 ### Classic CRT Look
-```
+
+```text
 Pixel Size: 4
 Scanline Intensity: 0.3
 Curvature: 0.02
@@ -101,7 +107,8 @@ Noise Intensity: 0.1
 ```
 
 ### PS1 Style
-```
+
+```text
 PSX Color Depth: 5
 PSX Dither Intensity: 0.5
 PSX Resolution Scale: 0.5
@@ -110,7 +117,8 @@ Scanline Intensity: 0.2
 ```
 
 ### VHS Tape Effect
-```
+
+```text
 Rolling Scanline Intensity: 0.3
 Rolling Scanline Speed: 0.5
 Noise Intensity: 0.2
