@@ -12,8 +12,6 @@ namespace Retro.CRTEffects
         {
             public RenderPassEvent renderPassEvent = RenderPassEvent.AfterRenderingPostProcessing;
 
-            [Header("=== PSX EFFECTS ===")]
-
             [Tooltip("Color bit depth per channel. PS1 used ~5 bits (32 levels). Lower = more banding.")]
             [Range(2, 8)] public float psxColorDepth = 5f;
 
