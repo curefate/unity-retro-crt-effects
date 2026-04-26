@@ -1,12 +1,12 @@
 {
-  "name": "com.retro.crt-effects",
+  "name": "com.retro.psx-effects",
   "version": "1.0.1",
-  "displayName": "Retro PSX CRT Effects",
+  "displayName": "Retro PSX CRT Effects (Forked)",
   "description": "A fork version with additional shaders.",
   "unity": "2022.3",
   "unityRelease": "0f1",
-  "documentationUrl": "https://github.com/Mushroom-Ano/unity-retro-crt-effects#readme",
-  "licensesUrl": "https://github.com/Mushroom-Ano/unity-retro-crt-effects/blob/master/LICENSE",
+  "documentationUrl": "https://github.com/curefate/unity-retro-crt-effects#readme",
+  "licensesUrl": "https://github.com/curefate/unity-retro-crt-effects/blob/master/LICENSE",
   "keywords": [
     "CRT",
     "retro",
@@ -18,15 +18,15 @@
     "URP"
   ],
   "author": {
-    "name": "Mushroom-Ano",
-    "url": "https://github.com/Mushroom-Ano",
-    "contributors": [
-      {
-        "name": "Majulizi",
-        "url": "https://github.com/curefate"
-      }
-    ]
+    "name": "Majulizi",
+    "url": "https://github.com/curefate"
   },
+  "contributors": [
+    {
+      "name": "Mushroom-Ano",
+      "url": "https://github.com/Mushroom-Ano"
+    }
+  ],
   "dependencies": {
     "com.unity.render-pipelines.universal": "14.0.0"
   }

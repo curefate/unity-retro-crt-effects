@@ -3,7 +3,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering.RenderGraphModule;
 
-namespace Retro.CRTEffects
+namespace Retro.PSXEffects
 {
     public class PSXRendererFeature : ScriptableRendererFeature
     {

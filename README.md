@@ -1,5 +1,7 @@
 # Retro CRT Effects for Unity URP
 
+**Forked from [Mushroom-Ano/unity-retro-crt-effects](https://github.com/Mushroom-Ano/unity-retro-crt-effects)**
+
 A collection of retro visual effects for Unity's Universal Render Pipeline (URP), including CRT monitor simulation and PSX-style rendering with VHS-inspired distortions.
 
 ## Features
@@ -34,7 +36,7 @@ A collection of retro visual effects for Unity's Universal Render Pipeline (URP)
 
 1. Open Unity Package Manager (Window > Package Manager)
 2. Click the "+" button and select "Add package from git URL"
-3. Enter: `https://github.com/mushroom-ano/unity-retro-crt-effects.git`
+3. Enter: `https://github.com/curefate/unity-retro-crt-effects.git`
 
 ### Option 2: Manual Installation
 
