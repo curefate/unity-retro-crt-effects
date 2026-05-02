@@ -366,54 +366,83 @@ Shader "Retro/PSXSimpleLitJitter (Baked)"
 
         // Meta pass for lightmapping (baked GI)
         Pass
-        {
-            Name "Meta"
-            Tags { "LightMode"="Meta" }
-            Cull Off
+{
+    Name "Meta"
+    Tags { "LightMode"="Meta" }
 
-            HLSLPROGRAM
-            #pragma target 2.0
-            #pragma vertex UniversalVertexMeta
-            #pragma fragment UniversalFragmentMeta
+    Cull Off
 
-            #pragma shader_feature_local_fragment _ALPHATEST_ON
-            #pragma shader_feature_local_fragment _EMISSION
+    HLSLPROGRAM
+    #pragma target 2.0
 
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/MetaInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/MetaPass.hlsl"
+    #pragma vertex VertMeta
+    #pragma fragment FragMeta
 
-            CBUFFER_START(UnityPerMaterial)
-                float4 _BaseColor;
-                float4 _BaseMap_ST;
-                float  _Cutoff;
-                float4 _EmissionColor;
-            CBUFFER_END
+    #pragma shader_feature_local_fragment _ALPHATEST_ON
+    #pragma shader_feature_local_fragment _EMISSION
 
-            TEXTURE2D(_BaseMap);
-            SAMPLER(sampler_BaseMap);
-            TEXTURE2D(_EmissionMap);
-            SAMPLER(sampler_EmissionMap);
+    #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+    #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/MetaInput.hlsl"
 
-            void InitializeStandardLitSurfaceData(float2 uv, out MetaInput metaInput)
-            {
-                half4 baseSample = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, uv);
-                half4 albedoAlpha = baseSample * _BaseColor;
+    CBUFFER_START(UnityPerMaterial)
+        float4 _BaseColor;
+        float4 _BaseMap_ST;
+        float  _Cutoff;
+        float4 _EmissionColor;
+    CBUFFER_END
 
-#if defined(_ALPHATEST_ON)
-                clip(albedoAlpha.a - _Cutoff);
-#endif
+    TEXTURE2D(_BaseMap);
+    SAMPLER(sampler_BaseMap);
+    TEXTURE2D(_EmissionMap);
+    SAMPLER(sampler_EmissionMap);
 
-                metaInput = (MetaInput)0;
-                metaInput.Albedo = albedoAlpha.rgb;
+    // ===== Meta Vertex =====
+    struct Attributes
+    {
+        float4 positionOS : POSITION;
+        float2 uv : TEXCOORD0;
+    };
 
-#if defined(_EMISSION)
-                metaInput.Emission = SAMPLE_TEXTURE2D(_EmissionMap, sampler_EmissionMap, uv).rgb * _EmissionColor.rgb;
-#else
-                metaInput.Emission = 0;
-#endif
-            }
-            ENDHLSL
-        }
+    struct Varyings
+    {
+        float4 positionCS : SV_POSITION;
+        float2 uv : TEXCOORD0;
+    };
+
+    Varyings VertMeta(Attributes IN)
+    {
+        Varyings OUT;
+        OUT.positionCS = UnityMetaVertexPosition(IN.positionOS, IN.uv, IN.uv);
+        OUT.uv = IN.uv;
+        return OUT;
+    }
+
+    // ===== Meta Fragment =====
+    half4 FragMeta(Varyings IN) : SV_Target
+    {
+        half4 albedoAlpha =
+            SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, IN.uv) * _BaseColor;
+
+    #if defined(_ALPHATEST_ON)
+        clip(albedoAlpha.a - _Cutoff);
+    #endif
+
+        MetaInput meta;
+        meta.Albedo = albedoAlpha.rgb;
+
+    #if defined(_EMISSION)
+        meta.Emission =
+            SAMPLE_TEXTURE2D(_EmissionMap, sampler_EmissionMap, IN.uv).rgb
+            * _EmissionColor.rgb;
+    #else
+        meta.Emission = 0;
+    #endif
+
+        return UnityMetaFragment(meta);
+    }
+
+    ENDHLSL
+}
     }
     Fallback "Hidden/Universal Render Pipeline/FallbackError"
 }
